@@ -1,0 +1,1 @@
+Domain module is the heart of application. Here will be all platform independent code, domain models, interfaces.
