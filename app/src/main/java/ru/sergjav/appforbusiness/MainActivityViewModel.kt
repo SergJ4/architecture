@@ -1,16 +1,16 @@
 package ru.sergjav.appforbusiness
 
-import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.BroadcastChannel
 import kotlinx.coroutines.channels.Channel.Factory.CONFLATED
 import kotlinx.coroutines.channels.ReceiveChannel
-import ru.sergjav.domain.IMainActivityViewModel
-import ru.sergjav.domain.MainActivityViewState
+import ru.sergjav.core.BaseViewModel
+import ru.sergjav.domain.BaseViewState
 import ru.sergjav.domain.Router
 
 @ExperimentalCoroutinesApi
-class MainActivityViewModel(override val router: Router) : ViewModel(), IMainActivityViewModel {
+class MainActivityViewModel(override val router: Router) :
+    BaseViewModel<MainActivityViewState>() {
 
     private val viewStateChannel = BroadcastChannel<MainActivityViewState>(CONFLATED)
 
@@ -18,6 +18,13 @@ class MainActivityViewModel(override val router: Router) : ViewModel(), IMainAct
         get() = viewStateChannel.openSubscription()
 
     init {
+        selectOnUi {
 
+        }
     }
 }
+
+data class MainActivityViewState(
+    override val showError: Boolean,
+    override val showProgress: Boolean
+) : BaseViewState(showProgress, showError)

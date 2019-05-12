@@ -1,17 +1,30 @@
 package ru.sergjav.appforbusiness
 
-import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import ru.sergjav.domain.IBaseView
-import ru.sergjav.domain.IMainActivityViewModel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.selects.select
+import org.koin.androidx.scope.currentScope
+import ru.sergjav.appforbusiness.di.mainActivityModule
+import ru.sergjav.core.BaseActivity
 
 @ExperimentalCoroutinesApi
-class MainActivity : AppCompatActivity(), IBaseView {
+class MainActivity : BaseActivity<MainActivityViewModel>() {
 
-    override val viewModel: IMainActivityViewModel
-        get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
+    override val contentView: Int = R.layout.main_activity_layout
 
-    override fun subscribeToViewModel() {
+    override fun provideDependencies() {
+        currentScope.beanRegistry.loadModules(listOf(mainActivityModule))
+        provideViewModel<MainActivityViewModel>()
+    }
 
+    fun subscribeToViewModel() {
+        scope.launch {
+            val state = select<MainActivityViewState> { viewModel.viewState }
+            bindState(state)
+        }
+    }
+
+    private fun bindState(state: MainActivityViewState) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
