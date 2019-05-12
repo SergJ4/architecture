@@ -25,7 +25,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(":domain")
+    implementation project(":core")
 
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.core:core-ktx:1.0.1'
+    implementation "ru.terrakok.cicerone:cicerone:5.0.0"
+    implementation "com.ymusicapp.coroutines:channel-lifecycle:0.0.2"
 }

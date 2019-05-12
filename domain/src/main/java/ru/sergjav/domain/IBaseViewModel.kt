@@ -11,4 +11,4 @@ interface IBaseViewModel<ViewState : BaseViewState> {
     val viewState: ReceiveChannel<ViewState>
 }
 
-open class BaseViewState(val showProgress: Boolean, val showError: Boolean)
+open class BaseViewState(open val showProgress: Boolean, open val showError: Boolean)
