@@ -1,4 +1,4 @@
-package ru.sergjav.appforbusiness.di
+package ru.sergjav.basicapp.di
 
 import android.app.Application
 import android.content.Context
@@ -6,8 +6,8 @@ import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.singleton
-import ru.sergjav.appforbusiness.APP_CONTEXT
-import ru.sergjav.appforbusiness.RouterImpl
+import ru.sergjav.basicapp.APP_CONTEXT
+import ru.sergjav.basicapp.RouterImpl
 import ru.terrakok.cicerone.Cicerone
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.Router

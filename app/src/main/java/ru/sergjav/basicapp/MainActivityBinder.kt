@@ -1,4 +1,4 @@
-package ru.sergjav.appforbusiness
+package ru.sergjav.basicapp
 
 import android.util.Log
 import kotlinx.coroutines.ExperimentalCoroutinesApi

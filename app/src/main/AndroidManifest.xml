@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ru.sergjav.appforbusiness">
+    package="ru.sergjav.basicapp">
 
     <application
-        android:name=".App"
+        android:name="ru.sergjav.basicapp.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity">
+        <activity android:name="ru.sergjav.basicapp.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

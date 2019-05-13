@@ -1,4 +1,4 @@
-package ru.sergjav.appforbusiness.di
+package ru.sergjav.basicapp.di
 
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
@@ -7,10 +7,10 @@ import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.singleton
-import ru.sergjav.appforbusiness.ACTIVITY_CONTEXT
-import ru.sergjav.appforbusiness.MainActivity
-import ru.sergjav.appforbusiness.MainActivityBinder
-import ru.sergjav.appforbusiness.MainActivityViewModel
+import ru.sergjav.basicapp.ACTIVITY_CONTEXT
+import ru.sergjav.basicapp.MainActivity
+import ru.sergjav.basicapp.MainActivityBinder
+import ru.sergjav.basicapp.MainActivityViewModel
 import ru.sergjav.core.BaseActivity
 import ru.sergjav.core.KodeinViewModelFactory
 import ru.sergjav.domain.BaseViewState

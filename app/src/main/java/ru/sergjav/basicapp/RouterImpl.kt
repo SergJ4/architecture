@@ -1,4 +1,4 @@
-package ru.sergjav.appforbusiness
+package ru.sergjav.basicapp
 
 import ru.sergjav.domain.BaseScreen
 import ru.sergjav.domain.Router

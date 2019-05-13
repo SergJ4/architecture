@@ -1,9 +1,9 @@
-package ru.sergjav.appforbusiness
+package ru.sergjav.basicapp
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import org.kodein.di.generic.instance
-import ru.sergjav.appforbusiness.di.mainActivityModule
+import ru.sergjav.basicapp.di.mainActivityModule
 import ru.sergjav.core.BaseActivity
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
