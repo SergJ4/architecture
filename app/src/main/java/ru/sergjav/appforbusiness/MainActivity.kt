@@ -2,31 +2,32 @@ package ru.sergjav.appforbusiness
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.selects.select
-import org.koin.android.ext.android.inject
-import org.koin.androidx.scope.currentScope
+import org.kodein.di.generic.instance
 import ru.sergjav.appforbusiness.di.mainActivityModule
 import ru.sergjav.core.BaseActivity
 import ru.terrakok.cicerone.NavigatorHolder
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
+
+const val ACTIVITY_CONTEXT = "activity_context"
 
 @ExperimentalCoroutinesApi
 class MainActivity : BaseActivity<MainActivityViewModel>() {
 
     override val contentView: Int = R.layout.main_activity_layout
 
-    val navigatorHolder: NavigatorHolder by inject()
+    val navigatorHolder: NavigatorHolder by subKodein.instance()
 
     private val navigator = SupportAppNavigator(this, R.id.activity_container)
 
-    override fun provideDependencies() {
-        currentScope.beanRegistry.loadModules(listOf(mainActivityModule))
+    override fun provideDependencies() = mainActivityModule(this, subKodein)
+
+    override fun fetchViewModel() {
         provideViewModel<MainActivityViewModel>()
     }
 
-    override fun onStart() {
-        super.onStart()
-        navigatorHolder.setNavigator(navigator)
+    override fun onResume() {
+        super.onResume()
+        subscribeToViewModel()
     }
 
     override fun onResumeFragments() {
@@ -39,14 +40,11 @@ class MainActivity : BaseActivity<MainActivityViewModel>() {
         navigatorHolder.removeNavigator()
     }
 
-    fun subscribeToViewModel() {
+    private fun subscribeToViewModel() {
         scope.launch {
-            val state = select<MainActivityViewState> { viewModel.viewState }
-            bindState(state)
+            for (state in viewModel.viewState) {
+                viewBinder.bind(state)
+            }
         }
-    }
-
-    private fun bindState(state: MainActivityViewState) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
